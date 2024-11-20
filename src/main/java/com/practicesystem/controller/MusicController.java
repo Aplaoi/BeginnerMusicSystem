@@ -14,12 +14,14 @@ public class MusicController {
     @Autowired
     private MusicService musicService;
 
+    //获取所有歌曲
     @GetMapping("/musics")
     public Result getMusic(){
         List<Music> list =musicService.findAll();
         return Result.success(list);
     }
 
+    //删除歌曲
     @DeleteMapping("/musics")
     public Result deleteMusic(Integer id){
         musicService.deleteById(id);
@@ -27,6 +29,7 @@ public class MusicController {
         return Result.success();
     }
 
+    //新增歌曲
     @PostMapping("/musics")
     public Result insertMusic(@RequestBody Music music){
         musicService.insertMusic(music);
@@ -34,13 +37,15 @@ public class MusicController {
         return Result.success(music);
     }
 
+    //获取对应id的歌曲信息
     @GetMapping("/musics/{id}")
     public Result findById(@PathVariable Integer id){
-        musicService.findById(id);
+        Music music=musicService.findById(id);
         System.out.println("找到id = " + id);
-        return Result.success();
+        return Result.success(music);
     }
 
+    //修改相应歌曲信息
     @PutMapping("/musics")
     public Result updateMusic(@RequestBody Music music){
         musicService.updateMusic(music);
