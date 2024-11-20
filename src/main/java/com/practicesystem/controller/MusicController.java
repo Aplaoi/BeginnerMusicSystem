@@ -26,4 +26,25 @@ public class MusicController {
         System.out.println("删除了id = " + id);
         return Result.success();
     }
+
+    @PostMapping("/musics")
+    public Result insertMusic(@RequestBody Music music){
+        musicService.insertMusic(music);
+        System.out.println("新增music = " + music.getName()+music.getSinger());
+        return Result.success(music);
+    }
+
+    @GetMapping("/musics/{id}")
+    public Result findById(@PathVariable Integer id){
+        musicService.findById(id);
+        System.out.println("找到id = " + id);
+        return Result.success();
+    }
+
+    @PutMapping("/musics")
+    public Result updateMusic(@RequestBody Music music){
+        musicService.updateMusic(music);
+        System.out.println("修改的music = " + music.getName()+music.getSinger());
+        return Result.success(music);
+    }
 }

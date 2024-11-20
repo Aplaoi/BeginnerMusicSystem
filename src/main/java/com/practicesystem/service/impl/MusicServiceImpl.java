@@ -22,4 +22,19 @@ public class MusicServiceImpl implements MusicService {
     public void deleteById(Integer id){
         musicMapper.deleteById(id);
     }
+
+    @Override
+    public void insertMusic(Music music){
+        musicMapper.insertMusic(music);
+    }
+
+    @Override
+    public void updateMusic(Music music){
+        musicMapper.updateMusic(music);
+    }
+
+    @Override
+    public Music findById(Integer id){
+        return musicMapper.findById(id);
+    }
 }

@@ -7,9 +7,22 @@
     <select id="findAll" resultType="com.practicesystem.pojo.Music">
         select * from songs.tb_songs
     </select>
+
     <delete id="deleteById">
         delete from songs.tb_songs where id=#{id}
     </delete>
+
+    <insert id="insertMusic">
+        insert into songs.tb_songs(name, singer) values (#{name},#{singer})
+    </insert>
+
+    <update id="updateMusic">
+        update songs.tb_songs set name=#{name},singer=#{singer} where id=#{id}
+    </update>
+
+    <select id="findById" resultType="com.practicesystem.pojo.Music">
+        select * from songs.tb_songs where id=#{id}
+    </select>
     <!--    <resultMap id="UserResultMap" type="com.practicesystem.pojo.Music">-->
 <!--        <id column="id" property="id"/>-->
 <!--        <result property="username" column="username"/>-->
